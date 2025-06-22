@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
-
+const AuthRouter = require('./Routes/AuthRoutes');
 
 app.use(cors());
 require('./Models/db');
@@ -18,6 +18,7 @@ app.get('/ping', (req,res)=>{
 
 app.use(bodyParser.json());
 app.use(cors());
+app.use('/auth', AuthRouter)
 
 app.listen(PORT ,()=>{
     console.log(`server is runing on port 8000`)
