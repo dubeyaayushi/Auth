@@ -4,8 +4,8 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const AuthRouter = require('./Routes/AuthRoutes');
+const ProductRouter = require('./Routes/ProductRouter');
 
-app.use(cors());
 require('./Models/db');
 
 // require('dotenv').config();
@@ -18,7 +18,9 @@ app.get('/ping', (req,res)=>{
 
 app.use(bodyParser.json());
 app.use(cors());
-app.use('/auth', AuthRouter)
+app.use('/auth', AuthRouter);
+app.use('/auth/products', ProductRouter);
+
 
 app.listen(PORT ,()=>{
     console.log(`server is runing on port 8000`)
